@@ -1,0 +1,67 @@
+1. 没有内容的 HTML 元素被称为空元素。空元素是在开始标签中关闭的
+2. 在开始标签中添加斜杠，比如 <br />，是关闭空元素的正确方法
+
+HTML 元素可以设置属性
+属性可以在元素中添加附加信息
+属性一般描述于开始标签
+属性总是以名称/值对的形式出现，比如：name="value"。
+
+在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号，例如：name='John "ShotGun" Nelson'
+
+class	为html元素定义一个或多个类名（classname）(类名从样式文件引入), 可以定义多个
+id	定义元素的唯一id， 定义多个无效
+style	规定元素的行内样式（inline style）
+title	描述了元素的额外信息 (作为工具条使用)
+
+浏览器会自动地在段落的前后添加空行。（</p> 是块级元素）
+
+
+请始终将正斜杠添加到子文件夹。假如这样书写链接：href="https://www.runoob.com/html"，
+就会向服务器产生两次 HTTP 请求。这是因为服务器会添加正斜杠到这个地址，然后创建一个新的请求，
+就像这样：href="https://www.runoob.com/html/"。
+
+<head></head> 标签里面可以添加的元素标签为： <title></title>, <style></style>, <script></script>,<meta>,<link>,<noscript></noscript>和<base>
+
+<title> 标签定义了不同文档的标题。
+
+<title> 在 HTML/XHTML 文档中是必须的。 当一个页面有多个title的时候，只会显示第一个title。 title作用：
+1. 定义了浏览器工具栏的标题
+2. 当网页被收藏时，显示在收藏夹中的标题
+3. 显示在搜索引擎结果页面的标题
+
+<meta>属性 ： name  content， http-equiv= content-type,default-type,refresh,
+
+Cascading Style Sheets)
+
+列表专业名词：
+ul是unordered lists的缩写 (无序列表)
+li是list item的缩写 （列表项目）
+ol是ordered lists的缩写（有序列表）
+dl是definition lists的英文缩写 (自定义列表)
+dt是definition term的缩写 (自定义列表组)
+dd是definition description的缩写（自定义列表描述）
+nl是navigation lists的英文缩写 （导航列表）
+tr是table row的缩写 （表格中的一行）
+th是table header cell的缩写 （表格中的表头）
+td是table data cell的缩写 （表格中的一个单元格）
+
+<label> 标签为 input 元素定义标注（标记）。
+label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+<label> 标签的 for 属性应当与相关元素的 id 属性相同。
+
+<button> 标签定义一个按钮。
+在 <button> 元素内部，您可以放置内容，比如文本或图像。这是该元素与使用 <input> 元素创建的按钮之间的不同之处。
+提示：请始终为 <button> 元素规定 type 属性。不同的浏览器对 <button> 元素的 type 属性使用不同的默认值。请始终为按钮规定 type 属性。Internet Explorer 的默认类型是 "button"，而其他浏览器中（包括 W3C 规范）的默认值是 "submit"。
+
+不间断空格(Non-breaking Space)
+HTML 中的常用字符实体是不间断空格(&nbsp;)。
+浏览器总是会截短 HTML 页面中的空格。如果您在文本中写 10 个空格，在显示该页面之前，浏览器会删除它们中的 9 个。如需在页面中增加空格的数量，您需要使用 &nbsp; 字符实体
+
+网页地址实例， hhtp://www.runoob.com/html/html-tutorial.html
+语法规则入下：  scheme://host/domain:port/path/filename
+scheme - 定义因特网服务的类型。最常见的类型是 http
+host - 定义域主机（http 的默认主机是 www）
+domain - 定义因特网域名，比如 runoob.com
+:port - 定义主机上的端口号（http 的默认端口号是 80）
+path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。
+filename - 定义文档/资源的名称

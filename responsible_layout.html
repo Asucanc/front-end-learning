@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"> 
+    <title>Responsible Layout Demo</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px;
+        background: #f1f1f1;
+      }
+
+      .header {
+        text-align: center;
+        background-color: white;
+        padding: 30px;
+      }
+
+      .header h1 {
+        font-size: 50px;
+      }
+
+      .topnav {
+        background-color: #333;
+        overflow: hidden;
+      }
+
+      .topnav a {
+        text-decoration: none;
+        padding: 14px 16px;
+        display: inline-block; 
+        color: #f2f2f2;
+        text-align: center;
+      }
+
+      .topnav a:hover {
+        color: black;
+        background-color: #ddd;
+      }
+
+      .leftcolumn {
+        width: 75%;
+        float: left;
+      }
+
+      .rightcolumn {
+        width: 25%;
+        float: left;
+        padding-left: 20px;
+        background-color: #f1f1f1;
+      }
+
+      .row::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .card {
+        padding: 20px;
+        background-color: white;
+        margin-top: 20px;
+        border-radius: 6px;
+      }
+
+      .footer {
+        text-align: center;
+        background-color: #ddd;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .fakeimg {
+        background-color: #aaa;
+        padding: 20px;
+        width: 100%;
+        border-radius: 4px;
+      }
+
+      /* 响应式布局 - 屏幕尺寸小于 800px 时，两列布局改为上下布局 */
+      @media screen and (max-width: 800px) {
+        .leftcolumn, .rightcolumn {
+          width: 100%; 
+          padding: 0;
+        }
+      }
+
+      /* 响应式布局 -屏幕尺寸小于 400px 时，导航等布局改为上下布局 */
+      @media screen and (max-width: 600px) {
+        .topnav a {
+          width: 100%; 
+          /* float: none; */
+          display: block;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>我的网页</h1>
+      <p>重置浏览器大小查看效果</p>
+    </div>
+
+    <div class="topnav">
+      <a href="#">主页</a>
+      <a href="#">新闻</a>
+      <a href="#">联系</a>
+      <a href="#" style="float: right;">关于</a>
+    </div>
+
+    <div class="row">
+      <div class="leftcolumn">
+        <div class="card">
+          <h2>文章标题</h2>
+          <h5>2021 年 4 月 10日</h5>
+          <div class="fakeimg" style="height: 200px;">
+            图片
+          </div>
+          <p>一些文本...</p>
+          <p>假装这儿有一些文本，一些文本一些文本一些文本
+            一些文本一些文本一些文本一些文本一些文本一些文本一些文本一些文本</p>
+        </div>
+        <div class="card">
+          <h2>文章标题</h2>
+          <h5>2021 年 4 月 10日</h5>
+          <div class="fakeimg" style="height: 200px;">
+            图片
+          </div>
+          <p>一些文本...</p>
+          <p>假装这儿有一些文本，一些文本一些文本一些文本
+            一些文本一些文本一些文本一些文本一些文本一些文本一些文本一些文本</p>
+        </div>
+      </div>
+      <div class="rightcolumn">
+        <div class="card">
+          <h2>关于我</h2>
+          <div class="fakeimg" style="height:100px;">图片</div>
+          <p>关于我的一些信息...</p>
+        </div>
+        <div class="card">
+          <h3>热门文章</h3>
+          <div class="fakeimg"><p>图片</p></div>
+        </div>
+        <div class="card">
+          <h3>关注我</h3>
+          <p>一些文本...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <h2>底部区域</h2>
+    </div>
+
+  </body>
+</html>`
