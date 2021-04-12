@@ -81,10 +81,26 @@ HTML代码中使用全局变量： JavaScript中，全局作用域是针对 Java
 const 关键字： const 用于声明一个或多个常量，声明时就必需进行初始化，且初始化之后值不可以再修改。
 const 定义的变量并非不可变，它定义一个常量引用一个值， 如果 使用 const 声明对象或是数组，是可以改变对象的属性或数组的成员的！
 
-
-
-
-
+JavaScript JSON
+JSON 全称为 JavaScript Object Notation
+JSON 是一种轻量级的易于理解的数据交换格式.
+JSON 在格式语法上与创建JavaScript对象代码相同，所以很容易将JSON数据转换为JavaScript对象
+JSON 语法规则：
+  数据为 键/值 对
+  数据由逗号分隔
+  大括号保存对象
+  方括号保存数组
+JS 方法： 
+  JSON.parse() 将JSON字符串转换为 JavaScript对象 
+  JSON.stringify(value[, replacer[, space]]) 用于将 JavaScript 值转换为 JSON字符串
+    value:
+      必需， 要转换的 JavaScript 值（通常为对象或数组）。
+    replacer:
+      可选。用于转换结果的函数或数组。
+      如果 replacer 为函数，则 JSON.stringify 将调用该函数，并传入每个成员的键和值。使用返回值而不是原始值。如果此函数返回 undefined，则排除成员。根对象的键是一个空字符串：""。
+      如果 replacer 是一个数组，则仅转换该数组中具有键值的成员。成员的转换顺序与键在数组中的顺序一样。
+    space:
+      可选，文本添加缩进、空格和换行符，如果 space 是一个数字，则返回值文本在每个级别缩进指定数目的空格，如果 space 大于 10，则文本缩进 10 个空格。space 也可以使用非数字，如：\t。
 
 
 
