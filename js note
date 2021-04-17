@@ -141,3 +141,97 @@ JavaScript对象是拥有属性和方法的数据。
 可以说， JavaScript对象是变量的容器。 
 但是，我们通常认为 JavaScript对象是键值对的容器。
 键值对通常的写法为 name: value, 键值对在JavaScript对象通常称为对象属性。
+
+JavaScript 函数
+函数是有事件驱动的或者当它被调用时执行的可重复使用的代码块
+函数语法： 函数是包括在花括号里面的代码块，前面使用关键字 function 定义
+  function methodname(arg1, arg2) {
+    
+  }
+带有返回值的函数
+  有时我们会希望函数返回它被调用的地方，通过return 实现
+  在使用return语句时，函数会停止执行，并返回指定的值。
+  function methodname(arg1, arg2) {
+    return 5;
+  }
+  在仅仅是想退出函数时，也可以使用return语句。 返回值是可选的
+
+JavaScript 变量的生存期
+JavaScript变量的生命周期从他们被声明的时候开始。其中，
+  局部变量会在函数运行以后删除。
+  全局变量会在页面关闭之后被删除。
+
+向未声明的 JavaScript变量分配值，
+  赋值给未声明的变量，该变量将作为window的一个属性。
+  非严格模式下， 给未声明的变量赋值创建的是全局变量，是全局对象的可配置属性，可以删除。
+
+JavaScript 作用域
+  在JavaScript中， 作用域为可访问变量，对象，函数的集合。
+  JavaScript 局部作用域，变量在函数内部声明，为局部变量，有局部作用域
+  JavaScript 全巨变领啊，变量在函数外定义，即为全局变量， 全局变量拥有全局作用域，网页中所有脚本和函数均可以使用
+  note： 如果变量在函数内没有声明（没有使用 var 关键字），该变量为全局变量。
+
+JavaScript 事件
+HTML事件是发生在HTML元素上面的事情。
+当在HTML页面中使用JavaScript时，JavaScript可以触发这些事件。
+常见HTML事件：
+  onchange = HTML元素改变
+  onclick=用户点击HTML元素
+  onmouseover=用户在一个HTML元素上面移动鼠标
+  onmouseout=用户从一个HTML元素上移开鼠标
+  onkeydown=用户按下键盘按键
+  onload=浏览器完成页面加载
+
+JavaScript 字符串
+js 字符串的转义用的是 \
+  var x = "test";
+  var y = new String("test");
+  console.log(typeof x);  // string
+  console.log(typeof y);  // object
+  note: 不要创建string对象， 会拖慢速度， 产生其他副作用。
+  如： x === y   // false
+  js中 === 为绝对相等， 数据类型和值都必须相等
+
+  js 字符串方法中 substr, slice, substring 的区别：
+    blog link: https://www.cnblogs.com/echolun/p/7646025.html
+  实例：
+    var x = "kenshin";
+    console.log(x.charAt(1));
+    console.log(x.charCodeAt("e"));
+    console.log(x.concat(" is a boy"));
+    console.log(x.indexOf("n"));
+    console.log(x.lastIndexOf("n"));
+    console.log(String.fromCharCode(65));
+    console.log(x.slice(-5, 7));
+    console.log(x.substr(-5, 5));
+    console.log(x.split(','));
+    console.log(x.substring(6, -1));
+    console.log(x.toUpperCase());
+    console.log(x.toLowerCase());
+    console.log(x.valueOf());
+
+  其他数据类型转换为布尔类型的规则: null、undefined、0、NaN、空字符串转换为false，其他转化为 true。
+  1、逻辑与 &&
+  返回的不是单纯的 true 还是 false，而是具体的值；
+  若是第一个值转换布尔值为 true，就返回第二个值；反之，返回第一个值。
+  换句话说：哪个值是错的就返回哪个值，如果都是对的，返回最后一个值。
+  2、逻辑或 ||
+  同 && 类似，返回的不是单纯的 true 和 false，而是具体的值。
+  这个是从头开始，遇到能转换成 true 的值，就返回那个值，如果没有 true 的就返回最后一个值。
+
+  JavaScript switch
+    switch中使用的是 绝对相等判断， 即类型与值都要相等
+    switch中 {} 不是必须的
+
+  JavaScript for 循环
+  不同类型的循环：
+    for - 循环代码块一定的次数
+    for/in 循环遍历对象的属性
+    while - 当条件为true的时候循环指定代码块
+    do/while - 先执行一遍，如果条件仍未真，接着执行直到条件不为真退出循环
+    for/of  ES6 引进的特性
+  note: 对数组进行循环遍历的时候， for/in 会跳过没被赋值的元素， for循环会打印 undefined.
+
+JavaScript break 和 continue 语句
+  break 语句用于跳出循环。
+  continue 用于跳过循环中的一个迭代。
