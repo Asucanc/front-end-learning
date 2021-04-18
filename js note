@@ -237,7 +237,9 @@ JavaScript break 和 continue 语句
   continue 用于跳过循环中的一个迭代。
 
 JavaScript typeof
-使用typeof来检测变量的数据类型
+使用typeof来检测变量的数据类型,typeof 
+用以获取一个变量或者表达式的类型，typeof 一般只能返回如下几个结果：
+number,boolean,string,function（函数）,object（NULL,数组，对象）,undefined
   用 typeof 检测 null 返回是object。
   如果使用undefined 来清空对象， typeof显示为 undefined
   typeof 一个没有值的变量会返回 undefined。
@@ -247,3 +249,13 @@ JavaScript typeof
     typeof null   // object
     null == undefined   // true
     null === undefined    // false
+
+JavaScript 类型转换
+  Number()转化为数字， String()转换为字符串，Boolean()转换为布尔值
+JavaScript 中有6中不同数据类型：
+  string  number  boolean  object  function  symbol
+3中对象类型
+  Object Date Array
+2种不包含任何值的数据类型
+  null  undefined
+NaN 与任何值都不相等，包括 NaN 本身
