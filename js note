@@ -259,3 +259,17 @@ JavaScript 中有6中不同数据类型：
 2种不包含任何值的数据类型
   null  undefined
 NaN 与任何值都不相等，包括 NaN 本身
+
+JavaScript 正则表达式
+正则表达式，使用单个字符串来描述、匹配一系列符合某个句式规则的字符串的搜索模式
+在JavaScript中，正则表达式通常用于两个字符串方法： search() 和 replace()
+search() 方法用于检索字符串中指定的子字符串，返回子串的起始位置。
+replace() 方法用于在字符串中用一些字符替换另一些字符。
+test() 正则表达式方法，test()方法用于检测一个字符串是否匹配某个模式，如果匹配返回true，否则返回false.
+exec() 正则表达式方法，用于检索字符串中的正则表达式的匹配，该函数返回一个数组，其中存放匹配的结果，如果没有找到匹配，返回null。
+
+JavaScript 错误 - throw、 try 和 catch
+try 语句测试代码块的错误
+catch 语句处理错误
+throw 语句创建自定义错误
+finally 语句在 try 和 catch 语句之后，无论是否触发异常，该语句都会执行
