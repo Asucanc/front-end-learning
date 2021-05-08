@@ -273,3 +273,27 @@ try 语句测试代码块的错误
 catch 语句处理错误
 throw 语句创建自定义错误
 finally 语句在 try 和 catch 语句之后，无论是否触发异常，该语句都会执行
+
+JavaScript 表单
+onsubmit="return validateForm()" 为什么不是 onsubmit="validateForm()" ？？
+onsubmit="validateForm()" 能够调用 validateForm() 对表单进行验证，但是在验证不通过的情况下，并不能阻止表单提交。
+onsubmit="return validateForm()" 当验证不通过时，返回 false，可以阻止表单提交。
+为何？
+原来 onsubmit 属性就像是 <form> 这个 html 对象的一个方法名，其值（一字符串）就是其方法体，默认返回 true；
+onsubmit="return validateForm()"
+相当于:
+  Form.prototype.onsubmit = function() {
+      return validateForm()
+  };
+这样复写了 onsubmit 的默认方法（默认返回 true），根据 validateForm() 的结果返回 true 或 false，当验证不通过时，返回 false，onsubmit="return false;" 阻止表单提交。
+
+JavaScript中有很多保留字，命名方法和变量的时候请避开这些词汇， name虽然不是保留字，但是请不要使用它
+
+JavaScript中的 this 关键字
+方法中， this表示该方法的所属对象
+单独使用， this表示全局对象
+函数中， this表示全局对象。 但是在严格模式中， this 是 Undefined
+在事件中， this表示接收事件的元素
+apply 和 call 允许切换函数执行的上下文环境（context），即 this 绑定的对象，可以将 this 引用到任何对象
+
+JavaScript:void(0) 含义
