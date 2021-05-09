@@ -416,4 +416,94 @@ JavaScript 代码规范：
     常量 (如 PI) 为大写 (UPPERCASE )
   8. - 通常在 JavaScript 中被认为是减法，所以不允许使用。
   9. 变量名不要以 $ 作为开始标记，会与很多 JavaScript 库冲突。
-  
+
+JavaScript 函数
+  JavaScript使用 function关键字定义函数
+    function functionName(params) { 
+      // function body
+    }
+  函数表达式：JavaScript 函数可以通过一个表达式定义。
+    var x = function(a, b) {  return a * b; }
+    z = x(3, 4);
+  上面的函数可以看做一个匿名函数
+
+  Function() 构造函数
+  var myFunction = new Function("a", "b", "return a * b");
+  var x = myFunction(3, 4);
+  只需要了解function可以通过构造函数构造，在 JavaScript 中，很多时候，你需要避免使用 new 关键字。
+
+  函数提升（Hoisting）
+  前面已经提到过 变量提升，函数可以在声明之前调用
+  自调用函数： 如果在表达式后面添加（），则会自动调用
+  (function(a, b) { 
+    var x = "Hello!"; 
+  })();     // 该函数将自己调用自己
+
+  函数可作为一个值使用：
+  var x = myFunction(3, 4) * 2;
+
+  函数是对象
+  typeof(myFunction)   // return "function"
+  JavaScript 函数有属性和方法
+  function myFunction(a, b) {
+    return arguments.lenght;  // 说明JS中function是有自己的属性和方法的
+  }
+  var txt = myFunction.toString();
+  函数定义作为对象的属性，称之为对象方法。 // 一个对象里面某个字段是一个方法
+  函数如果用于创建新的对象，称之为对象的构造函数。   // 就是构造函数
+
+  箭头函数
+  ES6 新增了箭头函数的支持，它比普通函数的表达式更简洁
+  (agr1, arg2, arg3, ... argN) => {  函数声明 }
+  (arg1, arg2, arg3, ... argN) => 表达式(单一)
+    等价于 (agr1, arg2, arg3, ... argN) => {  return 表达式 }
+  当只有一个参数的时候，圆括号可省略
+  (arg1) => { 函数声明 }  等价于 arg1 => { 函数声明 }
+  没有参数的时候，应该写成一对圆括号
+  () => { //函数声明 }
+  注意事项：
+  有的箭头函数都没有自己的 this。 不适合定义一个 对象的方法。
+  当我们使用箭头函数的时候，箭头函数会默认帮我们绑定外层 this 的值，所以在箭头函数中 this 的值和外层的 this 是一样的。
+  箭头函数是不能提升的，所以需要在使用之前定义。
+  使用 const 比使用 var 更安全，因为函数表达式始终是一个常量。
+  如果函数部分只是一个语句，则可以省略 return 关键字和大括号 {}，这样做是一个比较好的习惯:
+    const x = (x, y) => x + y
+  箭头函数的自调用 (() => {})()  
+
+JavaScript 函数参数
+函数显示参数（Parameters）与 隐式参数（Arguments), 类似于java中的形参和实参
+参数规则
+  JavaScript 函数定义显式参数时没有指定数据类型。
+  JavaScript 函数对隐式参数没有进行类型检测。
+  JavaScript 函数对隐式参数的个数没有进行检测。
+默认参数 ES5中函数在调用时没有传递参数，参数会默认设置为 undefined
+ES6 函数可以自带参数
+  function myFunction(x, y = 10) {}  
+arguments对象， arguments对象包含了函数调用的参数数组 arguments[i]
+函数参数的值传递和对象传递，类似java中的 值传递和引用传递
+
+JavaScript 函数调用
+JavaScript 函数有四种调用方式，每种方式在于this的初始化
+
+JavaScript 闭包
+闭包就是一个函数引用另一个函数的变量，因为变量被引用着所以不会被回收，
+因此可以用来封装一个私有变量。这是优点也是缺点，不必要的闭包只会增加内存消耗。
+或者说闭包就是子函数可以使用父函数的局部变量，还有父函数的参数。
+
+闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰。
+直观的说就是形成一个不销毁的栈环境。
+  实例： 解决计数器困境
+  var add = function() {
+    var counter = 0;
+    return function() {
+      return counter += 1;
+    }
+  }();
+
+  add(); add() add() //经过三次调用 counter此时的值为3. 实现了累加器的目的且修改counter的值只能通过调用add()
+  实例解析：
+  变量 add 指定了函数自我调用的返回字值。
+  自我调用函数只执行一次。设置计数器为 0。并返回函数表达式。
+  add变量可以作为一个函数使用。非常棒的部分是它可以访问函数上一层作用域的计数器。
+  这个叫作 JavaScript 闭包。它使得函数拥有私有变量变成可能。
+  计数器受匿名函数的作用域保护，只能通过 add 方法修改。
