@@ -606,3 +606,39 @@ Note: Infity, -Infinity, NaN
   0 / 0 得 NaN 。上面也有一些得 NaN 的情况。
   NaN 加、减、乘或除以任何数（包括 Infinity 、 -Infinity 和 NaN 本身）得 NaN 。
   无论变量 x 取何值（包括 undefined 、 null 、 true 、 false 、 Infinity 、 -Infinity 和 NaN 本身），NaN == x 恒为假。NaN.isNaN() 为真。 NaN.isFinite() 为假。 Boolean(NaN) 为假。
+
+JavaScript 字符串(String)对象
+  可使用位置(索引)访问字符串中任何的字符
+  var car = "Volvo"
+  var character = car[3];
+字符串属性和方法
+  属性:
+  length
+  prototype
+  constructor
+
+  方法:
+  charAt()
+  charCodeAt()
+  concat()
+  fromCharCode()
+  indexOf()
+  lastIndexOf()
+  match()
+  replace()
+  search()
+  slice()
+  split()
+  substr()
+  substring()
+  toLowerCase()
+  toUpperCase()
+  valueOf()
+
+JavaScript Date(日期)对象
+有四种方式初始化日期:
+  Date 对象用于处理日期和时间。 
+  new Date();
+  new Date(value);
+  new Date(dateString);
+  new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
