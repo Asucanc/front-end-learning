@@ -642,3 +642,55 @@ JavaScript Date(日期)对象
   new Date(value);
   new Date(dateString);
   new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
+
+JavaScript 数组对象
+创建一个数组的三种方式：
+  1. var myCars = new Array();
+     myCars[0] = "BMW";
+     myCars[1] = "Volvo"
+  2. var myCars = new Array("BWM", "Volvo");
+  3. var myCars = ["BWM", "Volvo"];
+在一个数组中你可以有不同的对象
+遍历方式：
+  const ary = ['a', 'b', 'c'];
+
+  // 最基本的方式, 只能遍历下标有序递增的数组
+  for (let i=0; i<ary.length; i++) {
+    console.log(i, ary[i]);   // 0 a  1 b  2 c
+  }
+
+  // in:每遍历一次数组指针向后移动一位, 并得到当前数组元素值的下标, 可以通过 ary[key] 来访问数组元素值
+  for (let key in ary) {
+    console.log(key, ary[key]);  // 0 a  1 b  2 c
+  }
+
+  // of:每遍历一次数组指针向后移动一位, 并得到当前数组元素的值, 处理二维数组时极为方便
+  for (let value of ary) {
+    console.log(value);    // a b c
+  }
+
+Js还为数组对象内置了多种迭代方法, 处理数组时极为方便
+  /**
+  *  forEach(function)
+  *  
+  *  该方法接受一个函数作为参数, 该函数拥有两个参数, 分别为数组的值、键
+  *  该方法没有返回值
+  */
+
+  ary.forEach((value, key) => {
+      console.log(key, value); // 0 a  1 b  2 c
+  })
+
+  /**
+  * map(function)
+  *  
+  * 该方法接受一个函数作为参数, 该函数拥有两个参数, 分别为数组的值、键
+  * 可以在传入的函数中返回相应的值,你每次迭代时返回的值会被map方法组装成一个新数组作为返回值返回
+  */
+
+  var result = ary.map((value, key) => {
+      return value + '_runoob.com';
+  })
+
+  console.log(result); // ['a_runoob.com', 'b_runoob.com', 'c_runoob.com']
+
