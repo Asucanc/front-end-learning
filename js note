@@ -546,6 +546,17 @@ HTMLCollection 和 NodeList
 
 JavaScript 对象
   JavaScript 中的所有事物都是对象：字符串、数值、数组、函数...
+JavaScript prototype (原型对象)
+  prototype 继承
+  所有的JavaScript对象都会从 一个propotype的原型对象中继承属性和方法:
+  Date 对象从 Date.prototype 继承
+  Array 对象从 Array.prototype 继承
+  Person 对象从 Person.prototype 继承
+
+  有的时候我们想要在所有已经存在的对象添加新的属性或方法。
+  另外，有时候我们想要在对象的构造函数中添加属性或方法。
+  使用 prototype 属性就可以给已有对象的构造函数添加新的属性：
+  格式：构造函数名.prototype.新属性或者新方法
 
 JavaScript 类
   JavaScript 是面向对象的语言，但 JavaScript 不使用类。
@@ -694,3 +705,16 @@ Js还为数组对象内置了多种迭代方法, 处理数组时极为方便
 
   console.log(result); // ['a_runoob.com', 'b_runoob.com', 'c_runoob.com']
 
+JavaScript Boolean(布尔对象)
+  Boolean 对象用于将非布尔值转换为布尔值
+  如果布尔对象无初始值或值为： 0, -0, null, undefined, "", false,  NaN, 那么对象的值为false. 否则其值为 true
+
+JavaScript Math(算数)对象
+  Math.round(var)  四舍五入
+  Math.random() 返回 0 -1 之间的随机数
+
+JavaScript RegExp 对象
+  构造一个正则表达式
+  var pattern = new RegExp(pattern, modifiers);
+  或者更简单的方法：
+  var pattern = /pattern/modifiers;
