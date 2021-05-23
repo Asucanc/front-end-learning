@@ -764,3 +764,27 @@ JavaScript Window History
     history.back() - 与在浏览器点击后退按钮相同
     history.forward() - 与在浏览器中点击向前按钮相同
     history.go() - 参数传递 1，前进一个页面； -1 表示后退一个页面； 0可以刷新页面
+
+JavaScript Window Navigator
+  window.navigator 包含有关访问者浏览器的信息
+  navigator.appCodeName - 浏览器代码
+  navigator.appName - 浏览器名称
+  navigator.appVersion - 浏览器版本
+  navigator.cookieEnabled - 是否启用Cookies
+  navigator.platform - 硬件平台
+  navigator.userAgent - 用户代理
+  navigator.language - 用户代理语言
+Note:
+  来自navigator对象的信息具有误导性，不应该用于检测浏览器版本，这是因为:
+  navigator 数据可被浏览器使用者更改
+  一些浏览器对测试站点会识别错误
+  浏览器无法发布晚于浏览器发布的新操作系统
+因此，浏览器检测一般借助于 特定对象来嗅探不同的浏览器，比如：
+  只有 Opera浏览器支持 window.opera, 可以借此识别出Opera
+  if(window.opera) { //action  }
+
+JavaScript弹窗
+  JavaScript中创建三种消息框：警告框、确认框、提示框
+  警告框: window.alert("something")
+  确认框: window.confirm("按下按钮")
+  提示框: window.prompt("sometext", "defaultVal")
