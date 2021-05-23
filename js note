@@ -718,3 +718,49 @@ JavaScript RegExp 对象
   var pattern = new RegExp(pattern, modifiers);
   或者更简单的方法：
   var pattern = /pattern/modifiers;
+
+JavaScript window - 浏览器对象模型
+  BOM - Browser Object Model 
+Window 对象， 表示浏览器窗口
+  所有JavaScript全局对象，函数以及变量均自动成为Window对象的成员
+  HTML DOM 的 document也是Window对象的属性之一    window.document.getElementById("id") 与 document.getElementById("id") 相同
+Window尺寸，三种方法确定浏览器窗口的尺寸。
+  对于 IE, Chrome, Firefox, Opera 以及 Safari
+    window.innerHeight - 浏览器窗口的内部高度（包括滚动条）
+    window.innerWidth - 浏览器窗口的内部宽度 （包含滚动条）
+  对于 IE 8,7,6,5 
+    document.documentElement.clientHeight
+    document.documentElement.clientWidth
+  其他 
+    document.body.clientHeight
+    document.body.clientWidth
+  所以， 实例中一般写作：
+    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+    var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+  Window属性和全局变量的区别:
+    全局变量不能通过 delete 操作符删除; 而window属性上定义的变量可以删除
+    访问未声明的变量会报错, 但是通过查询window对象，可以知道某个可能未声明的变量是否存在
+      var newVar = oldVar   // 报错 oldVar is not defined
+      var newVar = window.oldVar
+      console.log(newVar)  // undefined
+
+JavaScript Window Screen
+  Window.screen 对象包含用户屏幕相关信息
+  screen.availWidth  -  可用的屏幕宽度
+  screen.availHeight  -  可以的屏幕高度
+
+JavaScript Window Location
+  window.location 对象用于和获取当前页面的地址（URL）,并把浏览器重定向到新的页面
+  window.location 对象在编写时可不使用window前缀, 实例:
+    location.hostname - 返回web主机的域名
+    location.pathname - 返回当前页面的路径和文件名
+    location.port - 返回web主机的端口 （80 或 443）
+    location.protocol - 返回所使用的web协议 （http 或 https）
+  window.location.assign(url) ： 加载 URL 指定的新的 HTML 文档。 就相当于一个链接，跳转到指定的url，当前页面会转为新页面内容，可以点击后退返回上一个页面。
+  window.location.replace(url) ： 通过加载 URL 指定的文档来替换当前文档 ，这个方法是替换当前窗口页面，前后两个页面共用一个窗口，所以是没有后退返回上一页的
+
+JavaScript Window History
+  window.history 对象包含浏览器的历史
+    history.back() - 与在浏览器点击后退按钮相同
+    history.forward() - 与在浏览器中点击向前按钮相同
+    history.go() - 参数传递 1，前进一个页面； -1 表示后退一个页面； 0可以刷新页面
