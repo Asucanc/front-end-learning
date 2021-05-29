@@ -787,4 +787,37 @@ JavaScript弹窗
   JavaScript中创建三种消息框：警告框、确认框、提示框
   警告框: window.alert("something")
   确认框: window.confirm("按下按钮")
-  提示框: window.prompt("sometext", "defaultVal")
+
+JavaScript 计时事件
+  在一个设定的时间间隔之后执行代码，而不是在函数调用后立即执行。我们称之为计时事件。
+  JavaScript中的计时事件主要通过两个关键方法：
+  setInterval() - 间隔指定的毫秒数不停的执行指定代码
+  setTimeout() - 在指定的毫秒数之后执行代码
+  两者是 Window对象的两个方法，实际使用中是可以省略的
+  语法：
+    window.setInterval(function {}, milliseconds);
+    window.clearInterval(intervalVar);
+    window.setTimeout(function() {}, milliseconds);
+    window.clearTimeout(timeoutVar);
+
+JavaScript Cookie
+  Cookie 用于存储 web 页面的用户信息
+什么是Cookie?
+  Cookie是一些数据，存储在电脑的文本文件中。
+  当Web服务器向浏览器发送web页面时，在连接关闭后，服务端不会存储用户的信息。
+  Cookie的作用就是用于解决“如何记录客户端的用户信息”：
+    当用户访问web页面时，他的名字可以记录在cookie中。
+    当用户下一次访问该页面时，可以在cookie中读取用户的访问记录。
+
+  Cookie 以 name/value 键值对形式存储，
+  JavaScript 可以使用 document.cookie 属性来创建 、读取、及删除 cookie。
+  创建：
+    document.cookie = "key = value; key2 = value2; expires= Thu, 18 Dec 2023 12:00:00 CMT; path = /"
+    可以添加一个过期时间（UTC，GMT）, 默认情况下，Cookie会在浏览器关闭删除
+  读取：
+    var x = document.cookie;
+  修改：
+    JavaScript中，修改cookie类似于创建cookie，旧的cookie会被覆盖掉。
+  删除：
+    删除cookie只需要将expires参数设置为 以前的时间即可。删除时不必指定cookie的值
+    
