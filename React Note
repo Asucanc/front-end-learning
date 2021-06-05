@@ -1,10 +1,47 @@
 JSX 简介
- const element = <h1>hello, world</h1>
- JSX, JavaScript的语法拓展，在React中配合使用JSX， JSX可以很好地秒速UI应该呈现
- 它应有的交互的本质形式，JSX具有JavaScript的全部功能
+  const element = <h1>hello, world</h1>
+  JSX, JavaScript的语法拓展，在React中配合使用JSX， JSX可以很好地秒速UI应该呈现
+  它应有的交互的本质形式，JSX具有JavaScript的全部功能
 
- JSX可以生成React元素，并将其渲染为DOM。
+  JSX可以生成React元素，并将其渲染为DOM。
 
- 为什么使用JSX？
- React认为渲染的本质上与其他UI逻辑内在耦合，比如在UI中需要绑定处理事件、在某些时刻
- 状态发生变化时需要通知到UI，以及需要在UI中准备好数据。
+  为什么使用JSX？
+  React认为渲染的本质上与其他UI逻辑内在耦合，比如在UI中需要绑定处理事件、在某些时刻
+  状态发生变化时需要通知到UI，以及需要在UI中准备好数据。
+
+  JSX 也是一个表达式
+  在编译之后，JSX 表达式会被转为普通 JavaScript 函数调用，并且对其取值后得到 JavaScript 对象。
+  也就是说，你可以在 if 语句和 for 循环的代码块中使用 JSX，将 JSX 赋值给变量，把 JSX 当作参数传入，以及从函数中返回 JSX：
+
+  JSX 特定属性
+  你可以通过使用引号，来将属性值指定为字符串字面量： const element = <div tabIndex="0"></div>;
+  也可以使用大括号，来在属性值中插入一个 JavaScript 表达式： const element = <img src={user.avatarUrl}></img>;
+  Note： 
+    1. 在属性中嵌入 JavaScript 表达式时，不要在大括号外面加上引号。
+    你应该仅使用引号（对于字符串值）或大括号（对于表达式）中的一个，对于同一属性不能同时使用这两种符号。
+    2. JSX 因为在语法上更接近JavaScript，所以React DOM使用 camelCase（小驼峰命名）来定义属性的名字
+
+  使用JSX指定子元素
+  假如一个标签里面没有内容，可以使用 /> 来闭合标签，就像XML的语法一样
+  const element = <img src={user.avatarUrl} />
+
+  JSX可以防止注入攻击
+  const title = response.potentiallyMaliccciousInput;
+  //直接使用也是安全的
+  const element = <h1>{title}</hi>
+  React DOM 在渲染所有输入内容之前，默认都会进行转义
+
+  JSX表示对象
+  Babel 会把JSX转译为一个名为 React.createElement() 函数调用，所以以下两种示例代码完全等效：
+    const element = (
+      <h1 className="greeting"> 
+        Hello, world!
+      </h1>
+    );
+
+    const element = React.createElement(
+      'h1',
+      {className: 'greeting'},
+      'Hello world!'
+    );
+  React.createElement() 会预先执行一些检查，以帮助你编写无错的代码，实际上会创建一个这样的对象：                      
