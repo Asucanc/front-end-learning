@@ -1,0 +1,10 @@
+JSX 简介
+ const element = <h1>hello, world</h1>
+ JSX, JavaScript的语法拓展，在React中配合使用JSX， JSX可以很好地秒速UI应该呈现
+ 它应有的交互的本质形式，JSX具有JavaScript的全部功能
+
+ JSX可以生成React元素，并将其渲染为DOM。
+
+ 为什么使用JSX？
+ React认为渲染的本质上与其他UI逻辑内在耦合，比如在UI中需要绑定处理事件、在某些时刻
+ 状态发生变化时需要通知到UI，以及需要在UI中准备好数据。
