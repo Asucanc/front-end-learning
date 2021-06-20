@@ -274,4 +274,58 @@ State & 生命周期
     <a href="#" onclick="console.log('The link was clicked.'); return false">
       Click me
     </a>
+  在React中，可能是这样的：
+    function handleClick(e) {
+      // 需要显式地调用
+      e.preventDefault();
+    }
+  
+  在React中需要谨慎对待JSX回调函数中的this，在JavaScript中，class的方法不会默认绑定this。
+  如果忘记绑定，在回调中使用this的时候，其值为Undefined。
+  有两种方法绑定this.
+  1. 使用箭头函数进行绑定
+    class LoggingButton extends React.Component {
+      handleClick() {
+        console.log('this is: ', this)
+      }
+      render() {
+        // 此语法能保证 'handleClick' 内的 'this' 已经被绑定
+        return(
+          <button onClick={() => this.handleClick()}>
+            Click me
+          </button>
+        );
+      }
+    }
+  2. 使用class fields语法进行绑定：
+    class LoggingButton extends React.Component {
+      // 此语法能保证'handleClick' 内的'this'已经被绑定。
+      // 这是实验性的语法
+      handleClick = () => {
+        console.log('this is ', this);
+      }
+      render() {
+        return(
+          <button onClick={this.handleClick}>
+            Click me
+          </button>
+        );
+      }
+    }
 
+  向事件处理传递参数
+  在循环中我们通常会传递额外的参数， 例如，若id是你要删除的哪一行的ID，以下两种
+  方式都可以向事件处理程序传递参数：
+  <button onClick={(e) => this.deleteRow(id, e)}>
+    Delete me
+  </button>
+  <button onClick={this.deleteRow.bind(this, id)}>
+    Delete me
+  </button>
+  上面两种方式是等价的，分别通过箭头函数和Function.prototype.bind 来实现
+  在上面两种方式中，React的事件对象e都会做为第二个参数进行传递，而通过'bind'的方式，
+  事件对象以及更多的参数将会进行隐式的进行传递。
+
+条件渲染
+  在React中，你可以创建不同的组件来封装各种你需要的行为，然后根据不同的状态，
+  你可以只渲染对应状态下的部分内容
