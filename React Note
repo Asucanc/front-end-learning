@@ -329,3 +329,46 @@ State & 生命周期
 条件渲染
   在React中，你可以创建不同的组件来封装各种你需要的行为，然后根据不同的状态，
   你可以只渲染对应状态下的部分内容
+  下面是几种在JSX中内联条件渲染的方法：
+  与运算符 &&
+    function MailBox(props) {
+      const unreadMsgs = props.unreadMsgs;
+      return (
+        <div>
+          <h1>Hello!</h1>
+          {unreadMsgs.length > 0 &&
+            <h2>
+              You have {unreadMsgs.length} unread messages.
+            </h2>
+          }
+        </div>
+      );
+    }
+
+    const msgs = ['React', 'Re: React', 'Re: Re: React'];
+    ReactDOM.render(
+      <MailBox unreadMsgs={msgs} />,
+      document.getElementById('root')
+    );
+  在JavaScript中, true && expression 总是会返回 expression， 
+  false && expression 总是会返回 false.
+  因此， 如果条件为 true, &&右侧的元素就会被渲染，如果是false，React会忽略并跳过它。
+
+  三目运算符： condition ? true : false
+    render() {
+      const isLoggedIn = this.state.isLoggedIn;
+      return (
+        <div>
+          {isLoggedIn
+            ? <LogoutButton onClick={this.handleLogoutClick} />
+            : <LoginButton onClick={this.handleLoginClick} />
+          }
+        </div>
+      );
+    }
+  
+  阻止组件渲染
+  在极少数的情况下，你可能希望隐藏组件，即使它已经被其他组件渲染，若要完成此操作，你可以让render方法返回null，
+  而不进行任何渲染
+
+列表 & Key
