@@ -342,7 +342,7 @@ State & 生命周期
             </h2>
           }
         </div>
-      );
+      );· 
     }
 
     const msgs = ['React', 'Re: React', 'Re: Re: React'];
@@ -372,3 +372,105 @@ State & 生命周期
   而不进行任何渲染
 
 列表 & Key
+  设计一个组件，该组件接受一个数字数组，并输出一个元素列表
+    function NumberLsit(props) {
+      const numbers = props.numbers;
+      const listItems = numbers.map((number) => 
+        <li>{number}</li>
+      );
+      return (
+        <ul>{listItems}</ul>
+      );
+    }
+
+    const numbers = [1, 2, 3, 4, 5];
+    ReactDOM.render(
+      <NumberLsit numbers = {numbers} />,
+      document.getElementById('root')
+    );
+    // 运行这段代码会有一个警告： a key should be provided for list items.
+    给每一个列表项添加分配一个key解决上面的警告：
+     const listItems = numbers.map((number) =>
+      <li kye={number.toString()}>
+        {number}
+      </li>
+     );
+
+  Key
+    key帮助React识别哪些元素改变了，比如被添加或删除。因此需要给每一个元素赋予一个确定的标识
+
+  用key提提取组件
+    元素的key只有放在就近的数组上下文中才有意义。
+    经验法则：在map()方法中的元素需要设置key属性
+  
+  key在兄弟节点之间必须唯一
+  key会传递信息给React，但是不会传递给你的组件，如果需要使用key的值，可以用其他的属性显式地传递。
+
+  在JSX中嵌入map
+    JSX中允许嵌入任何表达式，所有可以进行直接内联map使用,像这样：
+    function NumberLsit(props) {
+      const numbers = props.numbers;
+      return (
+        <ul>
+          {numbers.map((number) => 
+            <listItems key={number.toString()} value={number} />  
+          )}
+        </ul>
+      );
+    }
+  Tips：如果map()嵌套了太多层，可能需要考虑提取组件
+
+表单
+  受控组件: 使用React的state成为表单的唯一数据来源，渲染表单的React组件控制用户输入过程中表单发生的操作。
+  被React以这种方式控制取值的表单输入元素叫做“受控组件”。
+  这种方式使得<input type="text">, <textarea>和<select>之间的标签都变得非常相似，它们都接受一个value，
+  可以使用它们来实现 受控组件
+
+  文件input标签： value为只读，因此它是React中一个非受控组件。
+
+  处理多个输入
+    当需要处理多个input元素时，我们可以给每个元素添加 name 属性，
+    并让处理函数根据 event.target.name的值选择要执行的操作
+  
+  受控输入空值
+    在受控组件上指定value的prop会阻止用户更改输入。
+    如果发现指定了value仍然能够输入，可能意外地将value设置为了null或undefined.
+
+状态提升
+  通常，多个组件需要反映相同的变化数据，这是我们建议将共享状态提升到共同父组件中去。
+
+组合 VS 继承
+  在React中使用继承我们可能会遇到一些问题，它们有些可以通过组合来解决
+  包含关系
+    有些组件无法提前知晓它们子组件的具体内容。
+    在 Sidebar（侧边栏）和 Dialog（对话框）等展现通用容器（box）的组件中特别容易遇到这种情况。
+    我们建议这些组件使用一个特殊的 children prop 来将他们的子组件传递到渲染结果中：
+      function FancyBorder(props) {
+        return (
+          <div className={'FancyBorder FancyBorder-' + props.color}>
+            {props.children}
+          </div>
+        );
+      }
+    这使得别的组件可以通过 JSX 嵌套，将任意组件作为子组件传递给它们。
+
+  特例关系
+    有些时候，我们会把一些组件看作是其他组件的特殊实例，
+    比如 WelcomeDialog 可以说是 Dialog 的特殊实例。
+    在 React 中，我们也可以通过组合来实现这一点。“特殊”组件可以通过 props 定制并渲染“一般”组件
+
+  那么继承呢？
+  不需要使用继承
+
+React 哲学
+  第一步：将设计好的 UI 划分为组件层级。
+    根据单一功能原则来判定组件的范围。也就是说，一个组件原则上只能负责一个功能。
+    如果它需要负责更多的功能，这时候就应该考虑将它拆分成更小的组件。
+
+  第二步：用 React 创建一个静态版本
+
+  第三步：确定 UI state 的最小（且完整）表示
+
+  第四步：确定 state 放置的位置
+
+  第五步：添加反向数据流
